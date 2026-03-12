@@ -12,7 +12,7 @@ export default function Home() {
     try {
       setLoading(true);
 
-      const res = await axios.post("https://ai-commit-generator-b4lu.onrender.com/generate-commit", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/generate-commit`, {
         diff: diff,
       });
 
