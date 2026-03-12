@@ -16,6 +16,16 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
 });
 
+// Health check route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Backend is running 🚀",
+    timestamp: new Date().toISOString()
+
+  });
+});
+
 app.post("/generate-commit", async (req, res) => {
   try {
     const { diff } = req.body;
