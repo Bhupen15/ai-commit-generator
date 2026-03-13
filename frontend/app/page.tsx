@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Home() {
   const [diff, setDiff] = useState("");
   const [commit, setCommit] = useState("");
   const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/`);
+  }, []);
 
   const generateCommit = async () => {
     try {
@@ -49,8 +53,7 @@ export default function Home() {
           disabled={!diff || loading}
           className="mt-4 w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition"
         >
-          {loading ? "Generating..." : "Generate Commit"}
-        </button>
+{loading ? "Generating commit message..." : "Generate Commit"}        </button>
 
         {commit && (
           <div className="mt-6 bg-gray-50 border rounded-lg p-4">
